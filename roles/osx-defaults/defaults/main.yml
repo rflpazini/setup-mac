@@ -1,0 +1,4 @@
+---
+wallpaper_url: https://raw.githubusercontent.com/rflpazini/setup-mac/master/files/wallpaper/wallpaper.png
+wallpaper_name: wallpaper.png
+wallpaper_path: "{{ ansible_env.HOME }}/Downloads/{{ wallpaper_name }}"

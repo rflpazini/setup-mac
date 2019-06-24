@@ -1,0 +1,87 @@
+set nocompatible    " be iMproved, required
+set encoding=utf-8
+set cursorline      " Enable highlight current line
+set colorcolumn=120 " Color column 120
+set laststatus=2    " Always show status bar
+set noshowcmd       " Hide typed command at statusbar
+set noswapfile      " Disable swp file
+set relativenumber  " Show relative line numbers
+
+filetype off        " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"Numbers
+Plugin 'myusuf3/numbers.vim'
+
+" Syntastic
+Plugin 'vim-syntastic/syntastic'
+
+" GO Lang Support
+Plugin 'fatih/vim-go'
+
+" Nerdtree view files
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'altercation/vim-colors-solarized'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" Solarized config
+syntax enable
+set background=dark
+colorscheme solarized
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+let g:solarized_termcolors=256
+
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Powerline
+"set laststatus=2
+"set showtabline=2
+"set noshowmode
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+
+" Tab navigation
+nmap <Leader>te :tabnew<CR>:edit<Space>
+nmap <Leader>to :tabnew<CR>
+nmap <Tab> gt
+nmap <S-Tab> gT
