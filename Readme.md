@@ -6,13 +6,22 @@
 
 First, make sure you have `pip` installed. To install `pip` use the following command:
 
-* `sudo easy_install pip`
+```bash
+$ sudo easy_install pip
+```
 
 Then install Ansible:
 
-* `pip install ansible`
+```bash
+$ pip install ansible
+```
 
-Now you should edit the `config.yml` to set your information and then you can just use `./run.sh` to execute Ansible. Remember to input your password when asked.
+Now you should edit the `config.yml` to set your information and then execute Ansible.
+
+```bash
+$ ./run.sh 
+```
+Remember to input your password when asked.
 
 # Which applications will be installed??
 
