@@ -11,7 +11,7 @@ homebrew_cask_packages:
   - enpass
   - firefox
   - iterm2
-  - postman
+  - insomnia
   - slack
   - spotify
   - spectacle
