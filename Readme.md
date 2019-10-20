@@ -22,7 +22,7 @@ Now you should edit the `config.yml` to set your information and then you can ju
 * Firefox
 * iTerm2
 * Karabiner-Elements
-* Postman
+* Insomnia
 * Slack
 * Spotify
 * Spectacle
