@@ -1,24 +1,4 @@
-eval "$(rbenv init -)"
-
 ### Functions ###
-
-function xcode_kill() {
-    killall Xcode
-    xcrun -k
-    xcodebuild -alltargets clean
-    rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
-    rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang.$(whoami)/ModuleCache"
-    rm -rf ~/Library/Developer/Xcode/DerivedData/*
-    rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
-}
-
-function xcode-deriveddata-open() {
-    open ~/Library/Developer/Xcode/DerivedData/
-}
-
-function simulator-delete-unavailables() {
-    xcrun simctl delete unavailable
-}
 
 function killapp() {
 	kill -9 $(ps aux | grep $1 | grep -v grep | awk '{print $2}')
@@ -33,8 +13,16 @@ function password() {
     echo "$(LC_ALL=C tr -dc "[:graph:]" < /dev/urandom | head -c ${count})"
 }
 
-function login-items-list() {
-    osascript -e 'tell application "System Events" to get the name of every login item'
+function whoknocks() {
+    customPort=$1
+
+    if [ "$customPort" = "" ]; then
+        echo "✊🏻 Knocking at default port: 8080"
+        lsof -n -i4TCP:8080
+    else
+        echo "✊🏻 Knocking at port: $customPort"
+        lsof -n -i4TCP:$customPort
+    fi
 }
 
 function git-parent-branch() {
@@ -50,7 +38,63 @@ function git-trackfile() {
 	git update-index --no-assume-unchanged $1
 }
 
+# Docker functions
+function cleardocker() {
+    echo "🧹 Clearing docker stuff"
+    killcontainers | deletedockerimages
+    echo "🐳 We\'re ready to rock"
+}
+
+function deletedockerimages() {
+    echo "🗑 Deleting all docker images ... "
+    docker images -q | xargs docker rmi
+}
+
+function stopcontainers() {
+    docker stop $(docker ps -a -q)
+}
+
+function killcontainers() {
+    echo "⏹ Stoping containers ..."
+    docker stop $(docker ps -a -q)
+
+    echo "🚮 Removing containers ..."
+    docker rm $(docker ps -a -q)
+
+    echo "✅ Containers Stoped!"
+}
+
 ### End Functions ###
+
+# Added by furycli:
+export PATH="/Users/rpazini/Library/Python/3.7/bin:$PATH"
+
+### Fury functions ###
+
+function impersonate() {
+    
+}
+
+function fgt() {
+    echo "🔄 Getting new token ..."
+    rm -rf ~/.fury/.credentials
+    fury get-token | tail -n 1 | pbcopy 
+    echo "🎯 Token copied to clipboard"
+}
+
+function fcv() {
+     withoutTests=$1
+
+    if [ "$withoutTests" = "" ]; then
+        echo "📦 Creating a new version..."
+        fury create-version $(date '+%y.%m.%d-h%H%M')
+    else
+        echo "☢️ Creating a new version without tests ..."
+        fury create-version $(date '+%y.%m.%d-h%H%M') --no-tests 'Disable tests for this build'
+    fi
+}
+
+### End Fury Functions ###
 
 ### Env Vars ###
 
@@ -62,6 +106,7 @@ export LANG=en_US.UTF-8
 ### Aliases ###
 
 alias la="ls -laish"
+alias datenow=echo $(date '+%y.%m.%d-%H%M')
 alias ip="ifconfig | grep \"inet \" | grep -v 127.0.0.1 | cut -d\  -f2"
 
 ### End Aliases ###
