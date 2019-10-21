@@ -1,0 +1,10 @@
+---
+  - name: Ensure sdkman is installed
+    stat:
+      path: "{{ ansible_env.HOME }}/.sdkman"
+    register: "is_sdkman_installed"
+  - name: Install sdkman if necessary
+    script: install_sdkman.sh
+    when: not is_sdkman_installed.stat.exists
+  - name: Install Java
+    script: configure_java_sdk.sh
