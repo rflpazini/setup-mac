@@ -6,7 +6,6 @@ homebrew_packages:
   - jq
   
 homebrew_cask_packages:
-  - alfred
   - caffeine
   - enpass
   - firefox
@@ -15,7 +14,6 @@ homebrew_cask_packages:
   - slack
   - spotify
   - spectacle
-  - rambox
   - visual-studio-code
-  - intellij-idea
+  - jetbrains-toolbox
   - minikube
