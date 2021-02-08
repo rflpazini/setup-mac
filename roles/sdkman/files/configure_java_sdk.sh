@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-java_8="8.0.222.hs-adpt"
+java="11.0.9.hs-adpt"
 
-sdk install java | sdk install java ${java_8}
+sdk install java | sdk install java ${java}
