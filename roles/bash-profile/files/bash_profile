@@ -66,36 +66,6 @@ function killcontainers() {
 
 ### End Functions ###
 
-# Added by furycli:
-export PATH="/Users/rpazini/Library/Python/3.7/bin:$PATH"
-
-### Fury functions ###
-
-function impersonate() {
-    
-}
-
-function fgt() {
-    echo "🔄 Getting new token ..."
-    rm -rf ~/.fury/.credentials
-    fury get-token | tail -n 1 | pbcopy 
-    echo "🎯 Token copied to clipboard"
-}
-
-function fcv() {
-     withoutTests=$1
-
-    if [ "$withoutTests" = "" ]; then
-        echo "📦 Creating a new version..."
-        fury create-version $(date '+%y.%m.%d-h%H%M')
-    else
-        echo "☢️ Creating a new version without tests ..."
-        fury create-version $(date '+%y.%m.%d-h%H%M') --no-tests 'Disable tests for this build'
-    fi
-}
-
-### End Fury Functions ###
-
 ### Env Vars ###
 
 export LC_ALL=en_US.UTF-8
@@ -108,5 +78,6 @@ export LANG=en_US.UTF-8
 alias la="ls -laish"
 alias datenow=echo $(date '+%y.%m.%d-%H%M')
 alias ip="ifconfig | grep \"inet \" | grep -v 127.0.0.1 | cut -d\  -f2"
+alias reload="source ~/.zshrc"
 
 ### End Aliases ###
