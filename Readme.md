@@ -25,19 +25,17 @@ Remember to input your password when asked.
 
 # Which applications will be installed??
 
-* Alfred
-* Caffeine
-* Enpass
-* Firefox
-* iTerm2
-* Karabiner-Elements
-* Insomnia
-* Slack
-* Spotify
-* Spectacle
-* VSCode
-* IntelliJIdea
-* Minikube
+* [caffeine](https://intelliscapesolutions.com/apps/caffeine)
+* [enpass](https://www.enpass.io/)
+* [firefox](https://www.mozilla.org/en-US/firefox/new/)
+* [iTerm2](https://iterm2.com/)
+* [insomnia](https://insomnia.rest/)
+* [slack](https://slack.com/)
+* [spotify](https://www.spotify.com/us/home/?correlation_id=50863fa17f244a62ecdb4d5c45ee838b&property_id=php_auth_home_deprecation)
+* [spectacle](https://www.spectacleapp.com/)
+* [vs-code](https://code.visualstudio.com/)
+* [jetbrains-toolbox](https://www.jetbrains.com/toolbox-app/)
+* [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 # Which command line tools will be installed??
 
@@ -45,7 +43,8 @@ Remember to input your password when asked.
 * docker-compose
 * kubernetes-cli
 * jq
-* oh-my-zsh
+* oh-my-zsh (with spaceship)
+ 
 
 Also, some functions, aliases and git configurations will be added as well.
 
