@@ -2,9 +2,11 @@
 	name = Rafael Pazini
 	email = rflpazini@gmail.com
 
-# Use SSH for GitHub even when a remote is configured over HTTPS.
+# Push to GitHub over SSH even when the remote is HTTPS. Uses pushInsteadOf (not
+# insteadOf) so fetch/clone stay on HTTPS — otherwise the rewrite hijacks tools
+# like Homebrew that git-fetch public repos and have no SSH key (host key error).
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+	pushInsteadOf = https://github.com/
 
 [init]
 	defaultBranch = main
