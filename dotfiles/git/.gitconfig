@@ -1,0 +1,47 @@
+[user]
+	name = Rafael Pazini
+	email = rflpazini@gmail.com
+
+# Use SSH for GitHub even when a remote is configured over HTTPS.
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[init]
+	defaultBranch = main
+
+[core]
+	autocrlf = input
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[fetch]
+	prune = true
+
+[alias]
+	c = checkout
+	s = status -s
+	b = branch
+	l = log --oneline
+	lg = log --graph --oneline --decorate --all
+	last = log -1 HEAD
+	unstage = reset HEAD --
+
+[pager]
+	branch = false
+	log = false
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+# Per-directory overrides (e.g. a work identity). Create ~/.gitconfig-work and
+# uncomment to switch name/email automatically inside that directory tree:
+# [includeIf "gitdir:~/Documents/Development/pluto/"]
+#	path = ~/.gitconfig-work
