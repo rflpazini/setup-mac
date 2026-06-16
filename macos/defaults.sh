@@ -5,7 +5,10 @@
 # References:
 #   https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-set -euo pipefail
+#
+# Best-effort: a single `defaults write` that errors on a given macOS version
+# must NOT abort the run, so we deliberately do NOT use `set -e` here.
+set -uo pipefail
 
 echo "==> Applying macOS defaults"
 

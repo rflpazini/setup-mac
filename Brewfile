@@ -2,9 +2,6 @@
 # Apply with:  brew bundle --file=Brewfile
 # Audit with:  brew bundle cleanup --file=Brewfile   (lists installed-but-not-here)
 
-# ─── Taps ────────────────────────────────────────────────────────────────────
-tap "hashicorp/tap"       # Terraform (removed from homebrew-core after BSL relicense)
-
 # ─── CLI: core ───────────────────────────────────────────────────────────────
 # git is provided by the Xcode Command Line Tools (installed by bootstrap.sh).
 brew "gh"                 # GitHub CLI
@@ -30,7 +27,7 @@ brew "nvm"
 
 # ─── Cloud / infra / k8s ─────────────────────────────────────────────────────
 brew "awscli"
-brew "hashicorp/tap/terraform"   # or swap for core "opentofu" (open-source fork)
+brew "opentofu"           # open-source Terraform (core formula — no tap/trust needed); cmd: tofu
 brew "helm"
 brew "kubectx"            # kubectx + kubens
 brew "minikube"

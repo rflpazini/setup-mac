@@ -42,6 +42,7 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # ── 5. Secrets file (created from template, never overwritten) ────────────────
+mkdir -p "$HOME/.nvm"            # nvm (Homebrew) expects this to exist
 mkdir -p "$HOME/.config/shell"
 if [[ ! -f "$HOME/.config/shell/secrets.zsh" ]]; then
 	log "Creating ~/.config/shell/secrets.zsh from template (fill it in)"
@@ -62,8 +63,8 @@ for pkg in "${STOW_PACKAGES[@]}"; do
 	stow --dir="$DOTFILES_DIR" --target="$HOME" --restow "$pkg"
 done
 
-# ── 7. macOS defaults ────────────────────────────────────────────────────────
+# ── 7. macOS defaults (non-fatal: cosmetic settings shouldn't break setup) ────
 log "Applying macOS defaults"
-bash "$REPO_DIR/macos/defaults.sh"
+bash "$REPO_DIR/macos/defaults.sh" || log "Some macOS defaults could not be applied — continuing"
 
 log "Done. Restart your shell:  exec zsh"
