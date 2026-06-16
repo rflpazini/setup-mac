@@ -1,6 +1,10 @@
-*.retry
+# macOS
 .DS_Store
 
-# ansible-galaxy dependencies
-geerlingguy.homebrew
-elliotweiser.osx-command-line-tools
+# Secrets — never commit the real file (only the .example template is tracked)
+dotfiles/shell/.config/shell/secrets.zsh
+secrets.zsh
+
+# Backups created by bootstrap.sh
+.dotfiles-backup/
+*.bak
